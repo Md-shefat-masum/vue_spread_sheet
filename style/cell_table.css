@@ -1,0 +1,74 @@
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+}
+.cell_table_body {
+  overflow-x: scroll;
+  padding: 40px 0px;
+  margin-bottom: 100px;
+}
+.cell_table_body .cell_table {
+  text-align: center;
+  position: relative;
+}
+.cell_table_body .cell_table .cell_table_rows:first-child .cell_table_cols {
+  border-top: 1px solid gray;
+}
+.cell_table_body .cell_table .cell_table_rows .cell_table_cols {
+  border-bottom: 1px solid gray;
+  border-right: 1px solid gray;
+  box-sizing: border-box;
+  padding: 5px;
+  float: left;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+}
+.cell_table_body .cell_table .cell_table_rows .cell_table_cols:first-child {
+  border-left: 1px solid gray;
+}
+.cell_table_body .cell_table .cell_table_rows .cell_table_cols.cell_table_row_no {
+  background-color: #e6f4fc;
+  width: 40px;
+  text-align: center;
+}
+.cell_table_body .cell_table .cell_table_rows.cell_table_col_nos .cell_table_cols.cell_table_col_no {
+  background-color: #e6f4fc;
+  text-align: center;
+  padding: 2px 10px;
+}
+.cell_table_body .cell_table .cell_table_rows.cell_table_col_nos .cell_table_cols.cell_table_col_no:first-child {
+  width: 40px;
+  height: 30px;
+}
+.selected {
+  background-color: #a7c8dd;
+}
+.clear_both {
+  clear: both;
+}
+/*# sourceMappingURL=./cell_table.css.map */

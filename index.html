@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style/cell_table.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="py-5 container">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="d-flex gap-4 flex-wrap">
+                        <div class="form-group d-flex gap-3 align-items-center">
+                            <label for="">row</label>
+                            <input v-model="row" type="number" class="form-control">
+                        </div>
+                        <div class="form-group d-flex gap-3 align-items-center">
+                            <label for="">col</label>
+                            <input v-model="col" type="number" class="form-control">
+                        </div>
+                        <div class="form-group d-flex gap-3 align-items-center">
+                            <label for="">selected col {{ selected_col_index+1 }} width</label>
+                            <input v-model="col_widths[selected_col_index]" type="number" class="form-control">
+                        </div>
+                        <div class="form-group d-flex gap-3 align-items-center">
+                            <label for="">selected row {{ selected_row_index+1 }} height</label>
+                            <input v-model="row_heights[selected_row_index]" type="number" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body ">
+                    <div class="cell_table_body">
+                        <div class="cell_table" :style="`width: ${table_width}px;`">
+                            <div class="cell_table_rows cell_table_col_nos">
+                                <div class="cell_table_cols cell_table_col_no"></div>
+                                <div :style="`width:${col_widths[col_no-1]}px;`"
+                                    @click="selected_col_index = col_no-1"
+                                    class="cell_table_cols cell_table_col_no" 
+                                    v-for="(col_no) in parseInt(col)">
+                                    {{ col_no }}
+                                </div>
+                                <div class="clear_both"></div>
+                            </div>
+                            <div v-for="(row, row_index) in table_schema.data" key="row_index" class="cell_table_rows">
+                                <div
+                                    @click="selected_row_index = row_index" 
+                                    :style="`height:${row_heights[row_index]}px;`" 
+                                    class="cell_table_cols cell_table_row_no">
+                                    {{ row_index + 1 }}
+                                </div>
+
+                                <div @mousedown="cell_mousedown($event, row_index, col_index)" 
+                                    v-for="(col, col_index) in row" 
+                                    key="col_index"
+                                    :style="`width:${col_widths[col_index]}px;height:${row_heights[row_index]}px;`" 
+                                    class="cell_table_cols">
+                                    {{ col.id }}
+                                </div>
+
+                                <div class="clear_both"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <table class="table table-bordered">
+                        <tr v-for="(row, index) in table_schema.data" key="index">
+                            <td @mousedown="cell_mousedown($event)" v-for="(col, index) in row" key="index">
+                                {{ col.id }}
+                            </td>
+                        </tr>
+                    </table> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.min.js"></script>
+    <script src="table_app.js"></script>
+</body>
+
+</html>
